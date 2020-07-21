@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using BananasAnanaserBot.Models;
+using Google.Cloud.Dialogflow.V2;
 using Microsoft.Extensions.Configuration;
 using VkNet.Abstractions;
 using VkNet.Model;
@@ -31,7 +32,7 @@ namespace BananasAnanaserBot.Services
 		{
 			var message = Message.FromJson(vkResponse);
 			var peerId = message.PeerId;
-			var messageText = message.Text;
+			string messageText = null;
 			var errorMessage = configuration["ErrorMessage"];
 			var session = sessionsContainer.GetOrCreateSession(message.FromId.ToString());
 
@@ -41,8 +42,30 @@ namespace BananasAnanaserBot.Services
 				HandleCommand(message, session)
 					.Then(result => messageText = result)
 					.OnFail(errMsg => messageText = errorMessage + errMsg);
-			
+
+			messageText ??= GetAnswer(message.Text, session.Id);
 			await SendMessage(peerId, messageText);
+		}
+
+		private string GetAnswer(string messageText, string sessionId)
+		{
+			var builder = new SessionsClientBuilder();
+			builder.CredentialsPath = @"D:\Projects\BananasAnanaserBot\df-access-key.json";
+			var client = builder.Build();
+			var projectId = configuration["ProjectId"];
+			var languageCode = "ru-RU";
+			var sessionName = SessionName.FromProjectSession(projectId, sessionId);
+			var queryInput = new QueryInput
+			{
+				Text = new TextInput
+				{
+					Text = messageText,
+					LanguageCode = languageCode
+				}
+			};
+			var response = client.DetectIntent(sessionName, queryInput);
+			
+			return response.QueryResult.FulfillmentText;
 		}
 
 		private Result<string> HandleCommand(Message messageText, Session session)
