@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="BotServicesLibrary.rar" />
+    <None Remove="BotServicesLibrary1-2.rar" />
+    <None Remove="BotServicesLibrary1-3.rar" />
+    <None Remove="BotServicesLibrary2.rar" />
+    <None Remove="BotServicesLibrary2Temp.rar" />
+    <None Remove="BotServicesLibrary3.rar" />
+    <None Remove="BotServicesLibrary4.rar" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.4" />
+  </ItemGroup>
+
+</Project>

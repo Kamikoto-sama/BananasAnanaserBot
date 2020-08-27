@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BananasAnanaserBot", "Banan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PythonIntegration", "PythonIntegration\PythonIntegration.csproj", "{F025BAB0-0569-4482-B131-E18AB4A35F41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotServicesLibrary", "BotServicesLibrary\BotServicesLibrary.csproj", "{DC267BE3-1537-46CA-9796-898D89274295}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{F025BAB0-0569-4482-B131-E18AB4A35F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F025BAB0-0569-4482-B131-E18AB4A35F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F025BAB0-0569-4482-B131-E18AB4A35F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC267BE3-1537-46CA-9796-898D89274295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC267BE3-1537-46CA-9796-898D89274295}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC267BE3-1537-46CA-9796-898D89274295}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC267BE3-1537-46CA-9796-898D89274295}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
